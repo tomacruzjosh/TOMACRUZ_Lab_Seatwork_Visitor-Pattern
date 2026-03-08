@@ -1,14 +1,16 @@
 import java.util.*;
+
 public class TelcoAllowance implements UsagePromo {
-    private static Map<String, Double> AllowanceMap = new HashMap<>();
+    private static final Map<String, Integer> allowanceMap = new HashMap<>();
+
     static {
-        AllowanceMap.put("Smart", 15);
-        AllowanceMap.put("Globe", 10);
-        AllowanceMap.put("Dito", 8);
+        allowanceMap.put("Smart", 15);
+        allowanceMap.put("Globe", 10);
+        allowanceMap.put("Dito", 8);
     }
 
     @Override
     public String showAllowance(String telcoName, double money) {
-        return AllowanceMap.get(telcoName);
+        return allowanceMap.getOrDefault(telcoName, 0) + " GB for ₱" + money;
     }
 }
